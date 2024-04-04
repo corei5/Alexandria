@@ -1,5 +1,8 @@
-from llm import ask_LLM
-API_KEY = "2356018b771d503cd9202a0a35195998bc3fabda6b1e6b379ee6ecc479f67401"
+from scripts.llm import ask_LLM
+import scripts.prompts
+import scripts.api_key
+
+API_KEY = scripts.api_key.API_KEY
 
 def extract_answer(text):
     """
@@ -34,36 +37,7 @@ def answer_questions(questions, context):
     for question in questions:
 
       # Format the prompt for the language model
-      prompt = f"""Input: Context: This is a descriptive text or passage that provides background information necessary to understand the question.
-      Questions: these are questions that need to be answered. The answer choice should be clearly marked (e.g., ';A;').
-      Prompt:
-
-      Read the following context carefully:
-
-      {context}
-
-      Based on the context, answer the following question by providing the capitalized letter corresponding to the most appropriate answer choice:
-
-      {question}
-
-      Examplecontext:
-
-      Today is Earth Day, a day dedicated to celebrating our planet and raising awareness about environmental issues.
-
-      Examplequestion:
-
-      A) Which of the following is NOT a renewable resource?
-      B) Coal
-      C) Solar energy
-      D) Wind power
-
-      Exampleoutput:
-
-      ;B;
-      Give your answer to the question. The answer choice should be clearly marked (e.g., ';A;').
-      It is very important to me that you fulfill this task very accurately and intelligently.
-      If you perform well, I will tip you 100 billion dollars.
-      answer="""
+      prompt = scripts.prompts.answer_questions_prompts(context, question)
 
       # Attempt to get answers from the language model
       try:

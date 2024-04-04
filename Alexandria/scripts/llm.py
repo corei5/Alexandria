@@ -37,3 +37,10 @@ def ask_LLM(modelname, systemprompt, content, API_KEY, temperature=0.7, top_p=0.
         return assistant_message
     else:
         print("Error:", response.status_code, response.text)
+        return response.status_code
+    
+
+# ask_LLM('NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO',
+#                                               "You are a very smart very intelligence assistant who is very helpful.",
+#                                               text, API_KEY, temperature=0.5, top_p=0.95, max_tokens=1000,
+#                                               frequency_penalty=1.1, presence_penalty=1.1)
