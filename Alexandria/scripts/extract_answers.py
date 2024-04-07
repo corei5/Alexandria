@@ -42,7 +42,10 @@ def answer_questions(questions, context):
       # Attempt to get answers from the language model
       try:
 
-          text = ask_LLM ('NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO', "You are a very smart very intelligence assistant who is very helpful.", prompt , API_KEY ,temperature=0.5,top_p=0.95,max_tokens=length, frequency_penalty=1.1,presence_penalty=1.1)
+          text = ask_LLM ('NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO',
+                           "You are a very smart very intelligence assistant who is very helpful.",
+                             prompt , API_KEY ,temperature=0.5,top_p=0.95,max_tokens=1000,
+                               frequency_penalty=1.1,presence_penalty=1.1)
           #ask_LLM ("mistral-large-latest", "You are a very smart, intelligent, helpful assistant. You try your best to do whatever the user asks you. You are very good at coding and at common sense.", prompt, temperature=0.5, top_p=0.95,max_tokens=length)
           #print(prompt)
 
@@ -53,7 +56,10 @@ def answer_questions(questions, context):
       except:
           try:
               # Retry fetching answers on failure
-              text = ask_LLM ('NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO', "You are a very smart very intelligence assistant who is very helpful.", prompt , API_KEY ,temperature=0.5,top_p=0.95,max_tokens=length, frequency_penalty=1.1,presence_penalty=1.1)
+              text = ask_LLM ('NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO',
+                               "You are a very smart very intelligence assistant who is very helpful.",
+                                 prompt , API_KEY ,temperature=0.5,top_p=0.95,max_tokens=1000,
+                                   frequency_penalty=1.1,presence_penalty=1.1)
               #ask_LLM ("mistral-large-latest", "You are a very smart, intelligent, helpful assistant. You try your best to do whatever the user asks you. You are very good at coding and at common sense.", prompt, temperature=0.5, top_p=0.95,max_tokens=length)
               answer = extract_answer(text)[0]
               print(question, answer)

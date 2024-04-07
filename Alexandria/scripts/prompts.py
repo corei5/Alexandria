@@ -1,3 +1,10 @@
+#Zero-Shot Prompting
+#Few-Shot Prompting (1-shot)
+#Few-Shot Prompting (3-shot)
+#Few-Shot Prompting (5-shot)
+#Few-Shot Prompting (10-shot)
+#Few-Shot Prompting
+
 def KG_reconstruction_prompt(reconstruction_so_far, current_kg):
     prompt = """RECONSTRUCTION SO FAR:
       """ + str(reconstruction_so_far) + """
@@ -11,6 +18,8 @@ def KG_reconstruction_prompt(reconstruction_so_far, current_kg):
       Write <reconstruction> right in front of your output of the reconstruction and </reconstruction> at it's end.
       It is very important to me that you fulfill this task very very accurately and intelligently.
       If you perform well, i will tip you 100 billion dollars.
+
+      Let's think step by step.
       """
     return prompt
 
@@ -26,7 +35,7 @@ def style_genre_prompt(input_text):
   Tone and Voice: Determine the dominant tone (e.g., hopeful, cynical, impartial, authoritative, whimsical, grave, sarcastic) and the nature of the authorial voice (e.g., intimate, distant, introspective, enthusiastic). How do these elements enrich the text’s unique character?
 Comparison and Guidance for Writers: How could a literature expert concisely convey the text's stylistic essence to an author wishing to replicate this style in new works across diverse topics? Emphasize critical stylistic features such as sentence structure, lexicon, tone, and the implementation of narrative techniques or rhetorical devices that are quintessential for capturing the style’s core.
       INPUT_TEXT:
-      """+input_text
+      """+input_text +". Let's think step by step."
 
     return prompt
 
@@ -60,7 +69,7 @@ def KG_format_example_prompt(current_kg_context, sentence):
       Take INPUT_SENTENCE and convert it into a part of a knowledge graph using the same format as in FORMAT_EXAMPLE. Use a naming and wording for entities, attributes and relationships that is coherrent with CURRENT_KNOWLEDGE_GRAPH. Try to write DESCRIPTIVE, SELF EXPLAINING NAMES for ENTITIS, ATTRIBUTES and RELATIONSHIPS, so that it will be REALLY EASY TO READ and UNDERSTAND the knowleadge graph later, even withou domain knowledge. But nevertheless, include only facts and entities and relations and attributes into the output, that are stated in the INPUT_SENTENCES. BE VERY FACTUAL, ACCURATE AND ON THE POINT. Try to include ALL FACTS, DATES, NUMBERS & NAMES in the INPUT_SENTENCE in the knowledge graph. AVOID REDUNDANCIES in the knowledge graph (don't mention the same fact twicein in the graph). Write <kg>right in fornt of your output of the knowledge graph and </kg> at it's end. - It is very, very important for me, that you perform this task very accurately, with the highest quality, to the best of your abilities.
 
       INPUT_SENTENCES:
-      """ + sentence
+      """ + sentence +". Let's think step by step."
     return prompt
 
 def answer_questions_prompts(context, question):

@@ -65,7 +65,8 @@ def evaluate_peformance(df, number_of_questions, file_name_save_questions):
         'text_questions_answers_dicts': text_questions_answers_dict_list,
     })
 
-    df.to_parquet(file_name_save_questions, row_group_size=1000)
+    #df.to_parquet(file_name_save_questions, row_group_size=1000)
+    #df.to_csv("dataset/questions_answer_save.csv", encoding='utf-8', index=False)
 
 
 
@@ -153,7 +154,7 @@ def evaluate_peformance(df, number_of_questions, file_name_save_questions):
     knowledgegraph_cap = np.mean(knowledgegraph_caps) if knowledgegraph_caps else 0
     reconstruction_cap = np.mean(reconstruction_caps) if reconstruction_caps else 0
 
-    return base_cap, original_cap, knowledgegraph_cap, reconstruction_cap
+    return base_cap, original_cap, knowledgegraph_cap, reconstruction_cap, df
 
 
 
