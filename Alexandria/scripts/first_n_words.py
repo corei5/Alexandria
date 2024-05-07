@@ -1,6 +1,6 @@
-def get_first_n_words(text,n=1000):
+def get_first_n_words(text,n):
     """
-    Extracts the first 1000 words from a given text.
+    Extracts the first n words from a given text.
 
     Parameters:
     - text (str): The text from which to extract the words.
@@ -12,7 +12,7 @@ def get_first_n_words(text,n=1000):
     words = text.split()
 
     # Extracting the first 1000 words.
-    first_1000_words = words[:1000]
+    first_1000_words = words[:n]
 
     # Joining the extracted words back into a string with spaces.
     result_text = ' '.join(first_1000_words)

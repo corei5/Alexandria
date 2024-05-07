@@ -1,6 +1,6 @@
 import requests
 
-def ask_LLM(modelname, systemprompt, content, API_KEY, temperature=0.7, top_p=0.9, max_tokens=2000, frequency_penalty=1.1, presence_penalty=1.1):
+def ask_LLM(modelname, systemprompt, content, API_KEY, temperature, top_p, max_tokens, frequency_penalty, presence_penalty):
     # Construct the payload
     data = {
         "model": modelname,
