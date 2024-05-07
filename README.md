@@ -57,6 +57,12 @@ Alexandria achieves the following performance:
 
 ## License
 
+## Todo:
+
+1. We do all evaluations with the abstracts using Lama 3 8b, 70b and Phi 3 Mini.
+2. Then we do exactly the same thing again for entire papers with a sliding window where the content is first a) paraphrased into simple, short sentences and at the same time, number salad and artifacts are filtered out... and b) then knowledge graph segments are created from these simple, short sentences. ...
+3. In addition, we do a sentence embedding and a bag of words from each of these simple, paraphrased short sentences.
+4. When reconstructing the original text, we can then compare how a) the reconstruction works directly with the knowledge graph as the only input and b) how the reconstruction works when you give the knowledge graph and the bag of words as input and then again c) give the knowledge graph and the bag of words as context and then reconstruct the individual sentences from the respective bag of words sentence by sentence and the reconstruction candidates with the original sentence embedding comparison and those with the highest cosine similarity are selected
 
 
 ## Citation
